@@ -27,8 +27,9 @@ body {
 }
 
 .container {
-  margin: 0 60px;  
+  margin: 0 auto;  
   max-width: 1480px;
+  z-index: 1;
 
   @include phones {
     width: 85%;
@@ -89,6 +90,12 @@ img {
 
 li {
   list-style-type: none;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  height: 100vh;
 }
 
 .title {
