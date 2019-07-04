@@ -1,0 +1,19 @@
+footer.footer
+  .container.footer__container
+    .copyrights
+      .copyrights__col
+        .copyrights__year © 2019
+      .copyrights__col
+        .copyrights__name Елена <br> Кулешова
+        .copyrights__text Личный сайт <br> веб-разработчика
+    .footer__content
+      include nav
+      +nav('footer')
+      .footer__content-desc
+        .footer__col
+          .footer__content-text Этот сайт я сделала в рамках обучения в <br> Школе онлайн образования Loftschool
+          include social
+          +social('footer')
+        .footer__col.footer__col_padding
+          .quote Всегда пишите код так, будто сопровождать его будет <br> склонный к насилию психопат, который знает где вы <br> живете
+          .quote__autor Martin Golding

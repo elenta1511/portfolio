@@ -24,6 +24,7 @@
   font-weight: 700;
   color: #414c63;
   margin-bottom: 100px;
+  margin-left: 65px;
 }
 .reviews__desc {
   color: #939dab;
@@ -45,12 +46,16 @@
 .reviews__list {
   display: flex;
   width: 100%;
+  justify-content: center;
 }
 .reviews__item {
   width: 28%;
   display: flex;
   flex-direction: column;
-  margin-right: 220px;
+  margin-right: 200px;
+}
+.reviews__item:last-child {
+  margin-right:0;
 }
 .arrow__left_round-icon, .arrow__right_round-icon {
   width: 20px;
@@ -65,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 30%;
+  left: 50%;
   border: 1px solid #2d3c4e;
   background-color: transparent;
   top: 0;
@@ -74,7 +79,7 @@
   transform: rotate(180deg);
 }
 .arrow__right_round {
-  left: 37%;
+  left: 55%;
 }
 .reviews__text-icon {
   width: 75px;

@@ -1,0 +1,12 @@
+section.hero
+  img(src= require("images/content/hero_back.jpg"), class="hero_back")
+  .container.container_hero
+    .hero__content
+      include header
+    .hero__info
+      h1.title.hero_title Личный сайт <br> веб разработчика
+      .hero__info-name Елена <br> Тарабукина
+    .scroll
+      .scroll__text Скролл
+        a(href="#").scroll__link      
+          +icon('scroll', 'scroll__icon') 

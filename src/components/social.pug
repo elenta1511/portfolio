@@ -1,0 +1,12 @@
+mixin social(mod)
+  .social
+    ul.social__list
+      li.social__item
+        a(href="#" class='social__link social--' + mod)
+          +icon('insta', 'social__icon')
+      li.social__item
+        a(href="#" class='social__link social--' + mod)
+          +icon('vk', 'social__icon')
+      li.social__item
+        a(href="#" class='social__link social--' + mod)
+          +icon('github', 'social__icon')
