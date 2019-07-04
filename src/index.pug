@@ -10,11 +10,12 @@ html(lang="ru")
   body
     .wrapper
       .maincontent
-        .parallax
+        .hero_bg(style=`background-image: url('${require('images/content/hero_back.jpg')}')`) 
           include components/hero  
           include components/aboutMe
-          include components/skills
-          include components/works
+        include components/skills
+        include components/works
+        .budda(style=`background-image: url('${require('images/content/budda.jpg')}')`)
           include components/reviews
           include components/contacts
-          include components/footer
+        include components/footer
