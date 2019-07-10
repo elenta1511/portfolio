@@ -1,32 +1,68 @@
-.circle {
-  fill: transparent;
+.skills__block {
+  margin-left: 200px;
 }
-
-.circle__under {
-  stroke: #eaeaea;
-  stroke-width: 5px;
-}
-
-.circle__above {
-  stroke: #6700f1;
-  stroke-width: 9px;
-  stroke-dasharray: 251;
-  stroke-dashoffset: 251;
-  animation: fill 100s linear infinite;
-  animation-play-state: paused;
-}
-
-.percentage {
-  height: 148px;
-  transform: rotate(-180deg);
-}
-
-@keyframes fill {
-  from {
-    stroke-dashoffset: 251;
+.skills {
+  @include phones {
+    text-align: center;
   }
-
-  to {
-    stroke-dashoffset: 0;
+}
+.skills__item {
+  margin-bottom: 30px;
+}
+.skills-row__title {
+   margin: 40px 0;
+  font-size: 24px;
+  font-weight: 700;
+  @include phones {
+    text-align: center;
+  }
+}
+.skills-row__list {
+  display: flex;
+  margin-left: -4%;
+  @include tablets {
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  @include phones {
+    flex-wrap: wrap;
+  }
+}
+.skills-row__item {
+  margin-left: 4%;
+}
+.skill {
+  position: relative;
+  width: 134px;
+  height: 134px;
+  @include tablets {
+    width: 135px;
+    height: 135px;
+  }
+}
+.skill__circle {
+  fill: transparent;
+  &_under {
+    stroke: #eaeaea;
+    stroke-width: 3px;
+  }
+  &_above {
+    stroke-width: 9px;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 100;
+  }
+}
+.skill__circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(#414c63, .5);
+  padding: 14px;
+  text-align: center;
+  @include phones {
+    font-size: 16px;
   }
 }

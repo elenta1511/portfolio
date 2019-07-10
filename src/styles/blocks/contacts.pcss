@@ -1,13 +1,35 @@
+.contacts {
+ @include tablets {
+    height: 50vh;
+    }
+    @include phones {
+      height: 100vh;
+    }
+}
+.contact__container {
+  display: flex;
+  flex-direction: column;
+}
 .contacts__title {
   font-size: 36px;
   color: #414c63;
   font-weight: 700;
   margin-bottom: 80px;
+  @include phones {
+    font-size: 24px;
+  }
 }
 .form {
-      display: flex;
-    flex-direction: column;
-    width: 1390px;
+  display: flex;
+  flex-direction: column;
+  width: 1390px;
+  @include tablets {
+    width: 680px;
+  }
+  @include phones {
+    width: 300px;
+    align-items: center;
+  }
 }
 .form__flex {
   display: flex;
@@ -19,6 +41,12 @@
   margin-bottom: 40px;
   width: 70%;
   display: flex;
+  @include tablets {
+    width: 100%;
+  }
+  @include phones {
+    flex-direction: column;
+  }
 }
 .username, .email {
   width: 50%;
@@ -26,6 +54,9 @@
   flex-direction: column;
   border-bottom: 1px solid;
   border-color: rgba(65, 76, 99, 0.7);
+  @include phones {
+    width: 100%;
+  }
 }
 .username {
   margin-right: 30px;
@@ -71,6 +102,9 @@ textarea:focus  {
   resize: none;
   width: 50%;
   line-height: 1.72em;
+  @include tablets {
+    width: 70%;
+  }
 }
 
 .button {
@@ -83,6 +117,13 @@ textarea:focus  {
   color: #fff;
   margin-top: 20px;
   border-radius: 40px 5px 40px 5px;
+  @include tablets {
+    width: 50%;
+    align-self: center;
+  }
+  @include phones {
+    width: 100%;
+  }
 }
 .button:hover {
   background-image: linear-gradient(to right, #4a02d1 0%, #9c08ff 100%);

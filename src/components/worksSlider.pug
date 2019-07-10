@@ -2,15 +2,16 @@
   .works__slider-col.col_left
     .works__slider-img
       img(src= require("images/content/preview.jpg"), class="slider_pic_max") 
-      ul.slider__list
+      ul.slider__list 
         li.slider__item
-          img(src=require("images/content/pre_min_one.jpg"), class="slider_pic_min") 
+          a.slider__item-link
+            img(src=require("images/content/preview_two.jpg"), class="slider_pic_min") 
         li.slider__item
-          img(src=require("images/content/pre_min_two.jpg"), class="slider_pic_min") 
-        li.slider__item
-          img(src=require("images/content/pre_min_three.jpg"), class="slider_pic_min") 
+          a.slider__item-link
+            img(src=require("images/content/preview_three.jpg"), class="slider_pic_min") 
         li.slider__item.slider__item_active 
-          img(src=require("images/content/pre_min_four.png"), class="slider_pic_min") 
+          a.slider__item-link
+            img(src=require("images/content/preview.jpg"), class="slider_pic_min") 
       button(type="button").arrow__left 
         +icon('arrow-down', 'arrow__left-icon')
       button(type="button").arrow__right
@@ -22,7 +23,7 @@
         li.slider__item-text CSS
         li.slider__item-text Javascript
     .works__slider-title Сайт школы образования
-    .works__slider-desc Эта девушка проходила обучение <br> веб-разработке не где-то, а в LoftSchool! 2 <br> месяца только самых сложных <br> испытаний  и бесонных ночей! 
+    .works__slider-desc Эта девушка проходила обучение  веб-разработке не где-то, а в LoftSchool! 2 месяца только самых сложных испытаний  и бесонных ночей! 
     .works__slider-link
-                   
-      a(href="#").slider_link
+      +icon('link', 'slider__link-icon')            
+      a(href="#").slider_link Посмотреть сайт

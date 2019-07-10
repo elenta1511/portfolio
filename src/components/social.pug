@@ -1,12 +1,12 @@
 mixin social(mod)
-  .social
+  div(class='social social--' + mod)
     ul.social__list
-      li.social__item
-        a(href="#" class='social__link social--' + mod)
+      li(class='social__item social__item--' + mod)
+        a(href="#" class='social__link')
           +icon('insta', 'social__icon')
-      li.social__item
-        a(href="#" class='social__link social--' + mod)
+      li(class='social__item social__item--' + mod)
+        a(href="#" class='social__link')
           +icon('vk', 'social__icon')
-      li.social__item
-        a(href="#" class='social__link social--' + mod)
+      li(class='social__item social__item--' + mod)
+        a(href="#" class='social__link')
           +icon('github', 'social__icon')

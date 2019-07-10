@@ -1,38 +1,86 @@
+.aboutMe {
+  clip-path: polygon(0 0 ,0 98% ,50% 100%, 100% 98%, 100% 0);
+}
 .aboutMe_container {
   display: flex;
+  @include tablets {
+    justify-content: center;
+  }
+  @include phones {
+    flex-direction: column;
+  }
 }
 .aboutMe__content {
   margin-right: 190px;
+  @include tablets {
+    margin-right: 90px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+  }
+  @include phones {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 20px;
+    align-items: center;
+  }
 }
 .aboutMe__photo {
   display: flex;
   justify-content: center;
   margin-bottom: 75px;
+  @include phones {
+    margin-bottom: 5px;
+  }
 }
 .aboutMe__pic {
-  width: 214px;
-  height: 208px;
+  width: 180px;
+  height: 174px;
   border-radius: 50%;
 }
+.aboutMe__text {
+  width: 37%;
+  @include phones {
+    width: 100%;
+  }
+}
+.aboutMe__text > .title {
+  @include phones {
+    margin-bottom: 0;
+  }
+}
 .aboutMe__text-content {
+  font-size: 16px;
+  font-weight: 600;
+  color: #99a4ba;
   margin-bottom: 106px;
+  @include phones {
+    margin-bottom: 50px;
+    font-size: 13px;
+  }
 }
 .aboutMe__text-name {
   font-weight: 700;
   font-size: 36px;
   margin-bottom: 40px;
-}
-.aboutMe__text-content { 
-  font-size: 16px;
-  font-weight: 600;
-  color: #99a4ba;
+  @include phones {
+    font-size: 30px;
+    margin-bottom: 15px;
+    width: 50%;
+  }
 }
 .aboutMe__text-note {
  font-style: italic;
  color: #adb1bf;
+ @include tablets {
+   font-size: 13px;
+ }
 }
 .aboutMe__info {
   margin-left: 150px;
+  @include tablets {
+    margin-left: 0;
+  }
 }
 .table___cell_left {
   font-weight: 600;

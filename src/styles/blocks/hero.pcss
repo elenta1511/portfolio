@@ -1,19 +1,39 @@
+
 .container_hero {
   position: absolute;
   top:0;
-  bottom: 0;
   right: 0;
   left: 0;
 }
-.hero__info {
-  display: flex;
-  justify-content: center;
+.hero__info { 
+  @include desktopHd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  @include desktop {
+    flex-direction: inherit;
+    justify-content: center;
+    text-align: left;
+    align-items: end;
+  }
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .hero__info-name {
   font-weight: 900;
   font-size: 72px;
-  margin-bottom: 240px;
+  margin-bottom: 200px;
   line-height: .91;
+  @include tablets {
+    text-align: center;
+  }
+  @include phones {
+    font-size: 36px;
+  }
 }
 .scroll__text {
   text-align: center;
@@ -21,8 +41,25 @@
   font-weight: 600;
   margin-bottom: 170px;
 }
+.scroll__text:hover,
+.scroll__icon:hover {
+  color: #5500f2;
+  fill: #5500f2;
+}
+.scroll {
+  @include tablets {
+    display: none;
+  }
+}
 .hero_title {
   text-align: end;
   margin-right: 60px;
   margin-top: 3px;
+  @include desktopHd {
+    text-align: center;
+  }
+  @include tablets {
+    text-align: center;
+    margin-right: 0;
+  }
 }

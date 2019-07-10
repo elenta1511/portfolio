@@ -1,12 +1,22 @@
 .budda {
-  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 100px);
+  background-image: none;
+  @include tablets {
+  background-image: url(~images/content/budda_back.jpg);
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 20px);
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
+  }
 }
 .hero_bg {
+  background-image: none;
+  position: relative;
+  clip-path: polygon(0 0 ,0 98% ,50% 100%, 100% 98%, 100% 0);
+  @include tablets {
+  background-image: url(~images/content/hero_back.jpg);
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
-  clip-path: polygon(0 0 ,0 90% ,50% 100%, 100% 90%, 100% 0);
+  clip-path: polygon(0 0 ,0 98% ,50% 100%, 100% 98%, 100% 0);
+  }
 }
