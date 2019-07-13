@@ -1,10 +1,17 @@
 .aboutMe {
   clip-path: polygon(0 0 ,0 98% ,50% 100%, 100% 98%, 100% 0);
+  @include tablets {
+    height: 50vh;
+  }
+  @include phones {
+    height: 100vh;
+  }
 }
 .aboutMe_container {
   display: flex;
   @include tablets {
     justify-content: center;
+    margin-bottom: 100px;
   }
   @include phones {
     flex-direction: column;

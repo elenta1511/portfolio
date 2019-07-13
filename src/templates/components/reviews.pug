@@ -7,7 +7,7 @@ script(type="text/x-template")#reviews-container
   
     flickity(ref="flickity" :options="flickityOptions").reviews__inner
       .reviews__item(v-for="review in reviews" :key="review.id")
-        blockquote.reviews__text
+        .reviews__text
           +icon('quote', 'reviews__text-icon')  
           .reviews__desc {{review.text}}
         .author

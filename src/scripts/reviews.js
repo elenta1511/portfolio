@@ -17,9 +17,7 @@ new Vue({
       flickityOptions: {
         prevNextButtons: false,
         pageDots: false,
-        wrapAround: true,
-        groupCells: window.screen.width > 700 ? 2 : 1,
-        resize: true
+        groupCells: true
       },
       reviews: [] 
     }

@@ -126,8 +126,12 @@ padding-bottom: 4px;
   }
 }
 
-.slider__item_active {
+.slider__list > .active {
   border: 2px solid  #4b6fd7;
+}
+.works__slider-buttons > .arrow__left:hover,
+ .arrow__right:hover {
+  background-color:  #5500f2;   
 }
 
 .slider__item {
@@ -147,8 +151,8 @@ padding-bottom: 4px;
 }
 
 .arrow__left-icon, .arrow__right-icon {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   fill: white;
 }
 
@@ -168,7 +172,7 @@ padding-bottom: 4px;
   justify-content: center;
   right: 0;
   cursor: pointer;
-  transform: rotate(90deg);
+  transform: rotate(270deg);
   @include phones {
     bottom: 1px;
   }

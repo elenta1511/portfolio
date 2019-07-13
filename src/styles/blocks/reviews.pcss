@@ -1,4 +1,5 @@
 .reviews {
+  height: 100%;
   @include tablets {
     height: 50vh;
     }
@@ -8,8 +9,12 @@
 }
 .reviews__container {
   position: relative;
+  margin-left: 150px;
+  padding-top: 100px;
+  width: 100%;
   @include tablets {
     margin-top: 140px;
+    margin-left: 5px;
   }
   @include phones {
     margin-top: 0;
@@ -38,7 +43,6 @@
 }
 .reviews__inner {
   padding-top: 70px;
-  width: 940px;
   @include phones {
     padding-top: 50px;
   }
@@ -46,6 +50,9 @@
 .author { 
   display: flex;
   margin-left: 60px;
+  @include tablets {
+    margin-left: 0;
+  }
 }
 .author__photo {
   margin-right: 30px;
@@ -66,8 +73,9 @@
   font-size: 36px;
   font-weight: 700;
   color: #414c63;
-  margin-bottom: 100px;
-  margin-left: 65px;
+  @include tablets {
+    margin-left: 66px;
+  }
   @include phones {
     font-size: 24px;
     margin-left: 0;
@@ -80,6 +88,9 @@
   margin-bottom: 30px;
   height: 90px;
   width: 67%;
+  @include tablets {
+    width: 85%;
+  }
 }
 .author__name {
   font-size: 18px;
@@ -113,7 +124,8 @@
     width: 40%;
   }
   @include phones {
-    width: 290px;
+    width: 100%;
+    margin: 0 50px;
   }
 }
 .reviews__item:last-child {
@@ -123,9 +135,8 @@
   width: 100%;
   display: flex;
   @include phones {
-    width: 290px;
+    width: 85%;
     font-size: 14px;
-    text-align: center;
   }
 }
 .arrow__round-icon {
@@ -146,8 +157,9 @@
   background-color: transparent;
   top: 0;
   fill: #2d3c4e;
+  top: 100px;
   @include tablets {
-    left: 49%;
+    left: 55%;
   }
   @include phones {
     left: 25%;
@@ -160,7 +172,7 @@
 .arrow__right_round {
   left: 60%;
   @include tablets {
-    left: 55%;
+    left: 65%;
   }
   @include phones {
     left: 50%;
@@ -171,4 +183,12 @@
   height: 36px;
   fill: rgba(#2d3c4e, .05);
   margin-right: 30px;
+  @include tablets {
+    display: none;
+  }
+}
+.flickity-slider {
+ @include phones {
+   width: 150%;
+ }
 }
