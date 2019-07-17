@@ -1,0 +1,73 @@
+.skills {
+  height: 100%;
+}
+.skills__top {
+  display: flex;
+  align-items: baseline;
+  @include phones {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0 40px 0;
+  }
+}
+.skills__title {
+  @include phones {
+    padding: 20px 0;
+    width: 100%;
+  }
+}
+.skills__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  @include tablets {
+    grid-template-areas: "frontend workflow"
+  }
+  @include phones {
+    grid-template-columns: 1fr;
+
+    grid-template-areas: 
+    "frontend"
+    "workflow";
+  }
+}
+.skills__item {
+  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+  background-color: #ffffff; 
+  height: 380px; 
+}
+.skills__item_workflow {
+   @include tablets {
+    grid-area: workflow;
+  }
+}
+
+.skills__item_frontend {
+   @include tablets {
+    grid-area: frontend;
+  }
+}
+
+.skills__add-text {
+  color: #383bcf;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.skills__inner {
+  width: 95%;
+  padding: 30px 0;
+  margin: 0 auto;
+  height: 100%;
+  @include phones {
+    width: 90%;
+  }
+}
+
+.skills__item_new-group {
+  @include tablets {
+    display: none;
+  }
+}
