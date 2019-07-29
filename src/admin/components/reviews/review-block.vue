@@ -1,0 +1,117 @@
+<template lang="pug">
+  .review-block
+    .review-block__header
+      .review-block__avatar#avatar( :style="{'backgroundImage' : `url(${this.remotePhotoPath})`}")
+      .review-block__content
+        .review-block__text-content
+          h3.review-block__name {{review.author}}
+        .review-block__prof
+          p {{review.occ}}
+    hr
+    .review-block__content-review
+      .review-block__desc
+        p {{review.text}}
+      .review-block__btns
+        button(
+          type="button"
+          @click="editReview"
+        ).btn.btn-block_edit Править
+        button(
+          type="button"
+          @click="remove"
+        ).btn.btn-block_remove Удалить
+</template>
+
+<script>
+
+import { mapActions, mapMutations } from 'vuex';
+export default {
+  props: {
+    review: Object
+  },
+  computed: {
+    remotePhotoPath() {
+      return `${"https://webdev-api.loftschool.com"}/${this.review.photo}`;
+    },
+  },
+  methods: {
+    ...mapActions('reviews', ['removeReview']),
+    ...mapMutations('reviews', ['SHOW_FORM', 'TURN_EDIT_MODE_ON', 'SET_EDITED_REVIEW']),
+    
+    showFormAndTurnEditModeOn() {
+      this['TURN_EDIT_MODE_ON']();
+      this['SHOW_FORM']();
+    },
+    setEditedReview() {
+      this['SET_EDITED_REVIEW'](this.review);
+    },
+    editReview() {
+      this.setEditedReview();
+      this.showFormAndTurnEditModeOn();
+    },
+    async remove() {
+      try {
+        await this.removeReview(this.review.id);
+      } catch (error) {}
+    }
+  }
+};
+
+</script>
+
+<style lang="postcss">
+#avatar {
+  margin-right: 20px;
+}
+.review-block {
+  height: 100%;
+  padding: 30px 30px;
+  position: relative;
+}
+.review-block__header {
+  display: flex;
+}
+.review-block__avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: top;
+  background-size: 100%;
+}
+.review-block__name {
+  font-size: 18px;
+  color: #414c63;
+  font-weight: 700;
+}
+.review-block__prof {
+  color: #414c63;
+  font-weight: 600;
+  opacity: .5;
+}
+hr {
+  margin: 30px 0;
+  height: 1px;
+  background-color: #dedee0;
+  border: none;
+}
+.review-block__desc {
+  color: #414c63;
+  font-weight: 600;
+  opacity: .7;
+}
+.review-block__btns {
+  position: absolute;
+  bottom: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 115px;
+  color: #414c63;
+  font-weight: 600;
+  opacity: .5;
+}
+.btn-block_edit, 
+.btn-block_remove {
+  background-color: transparent;
+}
+</style>

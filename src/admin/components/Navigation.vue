@@ -1,57 +1,77 @@
 <template lang="pug">
-nav.menu
-  .container.menu__container
-    ul.menu__list
-      li.menu__item.menu__item_active
-        a.menu__link(href="#") Обо мне 
-      li.menu__item
-        a.menu__link(href="#") Работы
-      li.menu__item
-        a.menu__link(href="#") Отзывы
+.admin-nav__wrapper
+  .container.nav__container
+    nav.admin-nav
+      ul.admin-nav__list
+        router-link.admin-nav__item(
+            v-for="(route, index) in routes"
+            :key="index"
+            tag="li"
+            :to="route.path"
+            )
+            a(href="").admin-nav__link {{route.title}}
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      routes: [
+        {
+          title: "Обо мне",
+          path: "/"
+        },
+        {
+          title: "Работы",
+          path: "/works"
+        },
+        {
+          title: "Отзывы",
+          path: "/reviews"
+        }
+      ]
+    };
+  }
+};
 </script>
 
-<style lang = "postcss">
-@import "../../styles/mixins.pcss";
-.menu {
-  background: #fff;
+<style lang="postcss">
+
+@import "../../styles/mixins.pcss";  
+
+.admin-nav__wrapper {
+  grid-area: nav;
 }
-.menu__list {
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: .1fr .1fr .1fr;
-  grid-template-rows: 1fr;
+
+.admin-nav__list {
+  display: flex;
+  align-items: center;
+  color: $text-color;
 
   @include phones {
-    grid-template-columns: repeat(3, 1fr);
-    width: 90%;
-    margin: 0 auto;
+    justify-content: center;
   }
 }
-.menu__item {
-  border-bottom: 3px solid transparent;
-  text-align: center;
-  transition: border-color .3s;
 
-  &_active, 
-  &:hover {
-    border-color: #383bcf;
-    transition: border-color .3s;
-    .menu__link {
-    color:  #383bcf;
-    transition: color .3s;
-    }
+.admin-nav__item {
+  padding: 30px;
+  cursor: pointer;
+
+  &--active {
+    font-weight: 600;
+    color: #383bcf;
+    border-bottom: 3px solid #383bcf;
+  }
+
+  &:not(&--active):hover {
+    font-weight: 600;
+    color: #383bcf;
+    border-bottom: 3px solid #383bcf;
+  }
+
+  @include phones {
+    padding: 30px 20px;
   }
 }
-.menu__link {
-  display: inline-block;
-  text-decoration: none;
-  color: #414c63;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 30px 0;
-  transition: color .3s;
-}
+
 </style>
