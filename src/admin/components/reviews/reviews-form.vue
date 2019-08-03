@@ -316,7 +316,6 @@ hr {
   }
 }
 .photo_upload {
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   .review-block__avatar--icon {

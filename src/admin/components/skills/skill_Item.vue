@@ -1,7 +1,7 @@
 <template lang="pug">
   tr(v-if="editmode === false")
     td {{skill.title}}
-    td {{skill.percent}}  %
+    td {{skill.percent}} %
     td.cell_skill-icon
       button.skill_edit(type="button" @click="editmode = true")
       button.skill_delete(type="button" @click="removeExistedSkill") 
@@ -61,12 +61,20 @@ button {
   background-repeat: no-repeat;
   height: 16px;
   width: 16px;
+  &:hover {
+    background: svg-load('pencil.svg', fill=#3f35cb, width=100%, height=100%;);
+    transition: background .3s;
+  }
 }
 .skill_delete {
   background: svg-load('trash.svg', fill=#a0a5b1, width=100%, height=100%;);
   background-repeat: no-repeat;
   height: 16px;
   width: 16px;
+  &:hover {
+    background: svg-load('trash.svg', fill=#bf2929, width=100%, height=100%;);
+    transition: background .3s;
+  }
 }
 .skill_save {
   background: svg-load('tick.svg', fill=#00d70a, width=100%, height=100%;);

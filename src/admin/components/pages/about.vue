@@ -9,9 +9,12 @@
 
     .container
       ul.skill-list
-        li.skill-list__item(v-if="showAddForm")
+        li.skill-list__item(
+            v-if="showAddForm"
+            @handleAddForm="showAddForm = !showAddForm"
+          )
           SkillsAdd(
-
+            @handleAddForm="showAddForm = !showAddForm"
           )
         li.skill-list__item(
           v-for="category in categories"
@@ -78,6 +81,7 @@ export default {
   background-position: center center, center center;
   background-repeat: repeat, no-repeat;
   background-size: cover, cover;
+  min-height: 100vh;
 }
 .skill-list {
   display: grid;

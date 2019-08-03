@@ -9,7 +9,7 @@
             tag="li"
             :to="route.path"
             )
-            a(href="").admin-nav__link {{route.title}}
+            a(href="path").admin-nav__link {{route.title}}
 </template>
 
 <script>
@@ -56,22 +56,20 @@ export default {
 .admin-nav__item {
   padding: 30px;
   cursor: pointer;
-
-  &--active {
-    font-weight: 600;
-    color: #383bcf;
-    border-bottom: 3px solid #383bcf;
-  }
+  border-bottom: 3px solid transparent;
 
   &:not(&--active):hover {
     font-weight: 600;
     color: #383bcf;
-    border-bottom: 3px solid #383bcf;
   }
 
   @include phones {
     padding: 30px 20px;
   }
 }
-
+.router-link-exact-active {
+    font-weight: 600;
+    color: #383bcf;
+    border-bottom: 3px solid #383bcf;
+}
 </style>

@@ -17,10 +17,12 @@
           type="button"
           @click="correctWork"
         ).btn.btn-block_edit Править
+          .icon-edit
         button(
           type="button"
           @click="removeThisWork"
         ).btn.btn-block_remove Удалить
+          .icon-remove
 </template>
 
 <script>
@@ -80,10 +82,13 @@ export default {
 }
 .work-block__content {
   padding: 0 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.1fr;
 }
 .work-block__text-content {
   margin-top: 40px;
-  margin-bottom: 45px;
+  margin-bottom: 30px;
 }
 .work-block__title {
   font-weight: 700;
@@ -97,6 +102,7 @@ export default {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 25px;
+  height: 130px;
 }
 .work-block__link {
   color: #383bcf;
@@ -104,12 +110,43 @@ export default {
   font-weight: 600;
   align-self: end;
   margin-bottom: 45px;
+  &:hover {
+    border-bottom: 3px solid #383bcf;
+    transition: border-bottom .3s;
+  }
 }
 .work-block__btns {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 55px;
 }
 .btn-block_edit, .btn-block_remove {
   background: transparent;
+  display: flex;
+  align-items: flex-end;
+  font-size: 16px;
+  color: rgba(65, 76, 99, 0.502);
+  font-weight: 600;
+  padding: 0;
+  justify-content: center;
+}
+
+.icon-edit,
+.icon-remove {
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px; 
+  margin-left: 10px;
+  &:hover {
+    height:16px;
+    width: 16px;
+    transition:  .3s;
+  }
+}
+.icon-edit {
+  background: svg-load('pencil.svg', fill=#3f35cb, width=100%, height=100%;);
+}
+.icon-remove {
+  background: svg-load('remove.svg', fill=#bf2929, width=100%, height=100%;);
 }
 </style>

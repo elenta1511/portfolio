@@ -16,10 +16,12 @@
           type="button"
           @click="editReview"
         ).btn.btn-block_edit Править
+          .btn__icon.icon-edit
         button(
           type="button"
           @click="remove"
         ).btn.btn-block_remove Удалить
+          .btn__icon.icon-remove
 </template>
 
 <script>
@@ -59,7 +61,7 @@ export default {
 
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 #avatar {
   margin-right: 20px;
 }
@@ -105,13 +107,33 @@ hr {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-column-gap: 115px;
-  color: #414c63;
+  grid-column-gap: 75px;
+  color: rgba(65, 76, 99, 0.502);
   font-weight: 600;
-  opacity: .5;
 }
 .btn-block_edit, 
 .btn-block_remove {
   background-color: transparent;
+  color: rgba(65, 76, 99, 0.502);
+  display: flex;
+  align-items: baseline;
+}
+.btn__icon {
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px; 
+  margin-left: 10px;
+  &:hover {
+    height:16px;
+    width: 16px;
+    transition:  .3s;
+  }
+}
+.icon-edit {
+  background: svg-load('pencil.svg', fill=#3f35cb, width=100%, height=100%;);
+}
+.icon-remove {
+  background: svg-load('remove.svg', fill=#bf2929, width=100%, height=100%;);
 }
 </style>
+

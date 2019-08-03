@@ -5,7 +5,7 @@
     .admin-head__controls
       button.admin-add(
         v-if="showAddButton"
-        @click.prevent="$emit('handleAddForm')"
+        @click="$emit('handleAddForm')"
         )
         .admin-add__icon
         | Добавить группу
@@ -38,6 +38,10 @@ export default {
 }
 .admin-head__title{
   margin-right: 54px;
+}
+.admin-title {
+  font-size: 21px;
+  font-weight: 700;
 }
 section {
   display: block;

@@ -1,30 +1,17 @@
 <template lang="pug">
   label.input(
-    v-if="fieldType === 'input'" 
-    :class="[{'input_labeled' : !!title, 'no-side-paddings' : noSidePaddings}, iconClass, {'error' : !!errorText}]"
+    :class="{'error': errorText}"
   )
-    .input__title(v-if="title") {{title}} 
+    .input__title {{title}} 
     input(
       v-bind="$attrs"
       :value="value" 
       @input="$emit('input', $event.target.value)"
     ).input__elem.field__elem
     .input__error-tooltip
-      
-
-  label.textarea(
-    v-else-if="fieldType === 'textarea'"
-    v-bind="$attrs"
-    :class="{'error': !!errorText}"
-  )
-    .input__title(v-if="title") {{title}} 
-    textarea.textarea__elem.field__elem(
-      :value="value"
-      :class="{'error' : !!errorText}"
-      @input="$emit('input', $event.target.value)"
-    )
-    .input__error-tooltip
-      
+      errorsTooltip(
+        :errorText="errorText"
+      )
 </template>
 
 <script>
@@ -41,18 +28,7 @@ export default {
       type: String,
       default: "input"
     },
-    value: String | Number,
-    icon: {
-      type: String,
-      default: "",
-      validator: value => ["", "user", "key"].includes(value)
-    }
-  },
-  computed: {
-    iconClass() {
-      const iconName = this.icon;
-      return iconName.length ? ` input_iconed input_icon-${iconName}` : "";
-    }
+    value: String | Number 
   },
   components: {
     errorsTooltip: () => import("./errorTooltip.vue")
@@ -60,11 +36,52 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
+
 .input__elem {
   width: 410px;
   border: none;
   border-bottom: 1px solid;
+}
+.input__title {
+  color: #414c63;
+  opacity: .3;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.error {
+  .input__error-tooltip {
+    display: block;
+  }
+  .input__elem {
+    border-color: #5500f2;
+  }
+}
+.input__error-tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.input {
+  display: block;
+  position: relative;
+}
+.input_user {
+  .input__elem {
+    background: svg-load("user.svg", fill=rgba(#13254b, 0.3),width=20px,height=20px) 0 0 no-repeat;
+    padding-left: 40px;
+    padding-bottom: 10px;
+  }
+}
+.input_password {
+  .input__elem {
+    background: svg-load("key.svg", fill=rgba(#13254b),width=20px,height=20px) 0 0 no-repeat;
+    padding-left: 40px;
+    padding-bottom: 10px;
+  }
 }
 </style>
 

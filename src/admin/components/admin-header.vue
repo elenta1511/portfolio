@@ -9,8 +9,21 @@
           .user-info__name Елена Тарабукина
         .window-desc Панель администрирования
       .admin-header__col.admin-header__col--last
-        a(href="#").exit-btn Выйти
+        a(href="#" @click="logOut").exit-btn Выйти
 </template>
+
+<script>
+
+import { removeToken } from '../helpers/token';
+export default {
+  methods: {
+    logOut() {
+      removeToken();
+      this.$router.replace('/login');
+    }
+  }
+}
+</script>
 
 <style lang="postcss">
 
