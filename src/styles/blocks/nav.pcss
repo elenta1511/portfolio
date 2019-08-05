@@ -1,0 +1,40 @@
+.nav__list {
+  display: flex;
+  font-size: 16px;
+  margin-right: -56px;
+  @include tablets {
+    margin-right: 0;
+    flex-wrap: wrap;
+  }
+}
+.nav__item {
+  margin-right: 56px;
+  @include tablets {
+    margin-bottom: 10px;
+  }
+}
+.nav__item:hover {
+  color: #5500f2;
+  transition: color .3s;
+}
+.nav__list--header {
+  @include tablets {
+    flex-direction: column;
+  }
+}
+.nav--header {
+  @include tablets {
+  display: none;
+  }
+  @include phones {
+    display: none;
+  }
+}
+.nav__link {
+ border-bottom: 2px solid transparent;
+ padding-bottom: 6px;
+}
+.nav__item:hover > .nav__link {
+  border-color: #5500f2;
+  transition: color .3s;
+}

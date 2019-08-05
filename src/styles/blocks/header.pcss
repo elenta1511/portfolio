@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 200px;
+  margin-top: 60px;
+  @include tablets {
+    align-items: end;
+  }
+  @include phones {
+    justify-content: space-between;
+  }
+}
+.logo {
+  font-weight: 900;
+  font-size: 36px;
+  margin-right: 90px;
+  line-height: .6;
+  @include tablets {
+    margin-right: 350px;
+  }
+  @include phones {
+    margin-right: 0;
+  }
+}
+
+.social__list {
+  display: flex;
+}
+.social__item {
+  margin-right: 30px;
+}
+.social__icon {
+  width: 25px;
+  fill: #414c63;
+  transition: fill .3s;
+}
+.social__icon:hover {
+  fill: #5500f2;
+  transition: fill .3s;
+  }
+.social--header {
+  @include phones {
+    display: none;
+  }
+}
