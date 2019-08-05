@@ -39,6 +39,7 @@ export default {
   methods: {
     ...mapActions('reviews', ['removeReview']),
     ...mapMutations('reviews', ['SHOW_FORM', 'TURN_EDIT_MODE_ON', 'SET_EDITED_REVIEW']),
+    ...mapMutations('tooltip', ['SHOW_TOOLTIP']),
     
     showFormAndTurnEditModeOn() {
       this['TURN_EDIT_MODE_ON']();
@@ -54,7 +55,16 @@ export default {
     async remove() {
       try {
         await this.removeReview(this.review.id);
-      } catch (error) {}
+        this['SHOW_TOOLTIP']({
+          type: 'success',
+          text: 'Отзыв удален'
+        });
+      } catch (error) {
+        this['SHOW_TOOLTIP']({
+          type: 'error',
+          text: 'Произошла ошибка'
+        });
+      }
     }
   }
 };

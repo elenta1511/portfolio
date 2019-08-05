@@ -15,12 +15,12 @@
       .work-block__btns
         button(
           type="button"
-          @click="correctWork"
+          @click="editWork"
         ).btn.btn-block_edit Править
           .icon-edit
         button(
           type="button"
-          @click="removeThisWork"
+          @click="remove"
         ).btn.btn-block_remove Удалить
           .icon-remove
 </template>
@@ -51,18 +51,35 @@ export default {
   },
   methods: {
     ...mapActions("works", ['removeWork']),
-    ...mapMutations("works", ['SHOW_FORM', 'EDIT_MODE_ON', 'SET_EDITED_WORK']),
-    async removeThisWork() {
+    ...mapMutations("works", ['SHOW_FORM', 'TURN_EDIT_MODE_ON', 'SET_EDITED_WORK']),
+    ...mapMutations('tooltip', ['SHOW_TOOLTIP']),
+
+    async remove() {
       try {
         await this.removeWork(this.work.id);
-        
+        this['SHOW_TOOLTIP']({
+          type: 'success',
+          text: 'Работа удалена'
+        });
       } catch (error) {
-        
+        console.error(error.message);
+        this['SHOW_TOOLTIP']({
+          type: 'error',
+          text: 'Произошла ошибка'
+        });
       }
     },
-     correctWork() {
-      this['EDIT_MODE_ON'](this.work);
+
+    showFormAndTurnEditModeOn() {
+      this['TURN_EDIT_MODE_ON'](this.work);
       this['SHOW_FORM']();
+    },
+    setEditedWork() {
+      this['SET_EDITED_WORK'](this.work);
+    },
+    editWork() {
+      this.setEditedWork();
+      this.showFormAndTurnEditModeOn();
     },
   }
 }
@@ -85,10 +102,14 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 0.1fr;
+  
 }
 .work-block__text-content {
   margin-top: 40px;
   margin-bottom: 30px;
+  @include phones {
+    margin-top: 15px;
+  }
 }
 .work-block__title {
   font-weight: 700;
@@ -113,6 +134,9 @@ export default {
   &:hover {
     border-bottom: 3px solid #383bcf;
     transition: border-bottom .3s;
+  }
+  @include phones {
+    margin-bottom: 25px;
   }
 }
 .work-block__btns {

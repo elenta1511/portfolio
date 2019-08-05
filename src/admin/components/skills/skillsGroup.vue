@@ -80,29 +80,55 @@ export default {
     
     ...mapActions('skills', ['addSkill']),
     ...mapActions('categories', ['editSkillGroup', 'removeSkillGroup']),
+    
     async addNewSkill() {
+      if ((await this.$validate()) === false) return;
       try {
         await this.addSkill(this.skill);
         this.skill.title="";
         this.skill.percent="";
-      } catch (error) {}
+        this["SHOW_TOOLTIP"]({
+          type: "success",
+          text: "Навык добавлен"
+        });
+      } catch (error) {
+        console.error(error.message);
+        this["SHOW_TOOLTIP"]({
+          type: "error",
+          text: "Произошла ошибка"
+        });
+      }
     },
 
     async editGroupCategory(editedCategory) {
       if ((await this.$validate("editedCategory.category")) === false) return;
       try {
         await this.editSkillGroup(this.editedCategory);
-        editmode=false
+        this["SHOW_TOOLTIP"]({
+          type: "success",
+          text: "Категория изменена"
+        });
       } catch (error) {
-        console.log(error.message);
-     
+       console.error(error.message);
+        this["SHOW_TOOLTIP"]({
+          type: "error",
+          text: "Произошла ошибка"
+        });
       }
     },
 
     async removeGroup() {
       try {
         await this.removeSkillGroup(this.category.id);
+        this["SHOW_TOOLTIP"]({
+          type: "success",
+          text: "Группа удалена"
+        });
       } catch (error) {
+         this["SHOW_TOOLTIP"]({
+          type: "error",
+          text: "Произошла ошибка"
+        });
       }
     }
   }
@@ -140,6 +166,10 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include phones {
+    justify-content: space-between;
+    margin: 0 20px;
+  }  
 }
 .edit_group {
   background: svg-load('pencil.svg', fill=#a0a5b1, width=100%, height=100%;);
@@ -160,6 +190,11 @@ input {
   }
   .skills_table {
     width: 100%
+    @include phones {
+      display: flex;
+      flex-direction: column;
+      margin: 0 20px;
+    }
   }
  .add-skill_button {
   height: 40px;
@@ -179,7 +214,7 @@ input {
         background-image: linear-gradient(to right, #3f35cb, #006aed);
     }
   }
-  .add-skill-wrapper {
+.add-skill-wrapper {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }

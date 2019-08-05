@@ -4,6 +4,8 @@
   Navigation
   .content
     router-view
+  .tooltip
+    queryTooltip
 </template>
 
 
@@ -12,7 +14,8 @@ import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
     Header: () => import("./components/admin-header"),
-    Navigation: () => import("./components/navigation")
+    Navigation: () => import("./components/navigation"),
+    queryTooltip: () => import("./components/queryTooltip")
   }
 };
 </script>

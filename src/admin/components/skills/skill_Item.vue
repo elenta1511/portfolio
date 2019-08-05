@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
+
 export default {
   props: {
     skill: Object
@@ -32,17 +33,37 @@ export default {
   },
   methods: {
     ...mapActions("skills", ["removeSkill", "editSkill"]),
+    ...mapMutations("tooltip", ["SHOW_TOOLTIP"]),
+
     async removeExistedSkill() {
       try {
         await this.removeSkill(this.skill.id);
-      } catch (error) {}
+          this["SHOW_TOOLTIP"]({
+          type: "success",
+          text: "Навык удален"
+        });
+      } catch (error) {
+        console.error(error.message);
+        this["SHOW_TOOLTIP"]({
+          type: "error",
+          text: "Произошла ошибка"
+        });
+      }
     },
     async save() {
       try {
         await this.editSkill(this.editedSkill);
         this.editmode = false;
+          this["SHOW_TOOLTIP"]({
+          type: "success",
+          text: "Навык изменен"
+        });
       } catch (error) {
-        
+        console.error(error.message);
+        this["SHOW_TOOLTIP"]({
+          type: "error",
+          text: "Произошла ошибка"
+        });        
       }
     }
   }
@@ -95,5 +116,11 @@ button {
 .cell_skill-icon {
   display: flex;
   justify-content: space-around;
+}
+tr {
+  @include phones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

@@ -88,6 +88,11 @@ export default {
   grid-template-rows: auto;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
+  @include phones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .skill-list__item {
     margin-bottom: 1.875rem;
@@ -97,5 +102,13 @@ export default {
     display: flex;
     justify-content: center;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    @include tablets {
+      width: 360px;
+      padding: 0 20px;
+    }
+    @include phones {
+      width: 400px;
+      padding: 0 20px;
+    }
 }
 </style>

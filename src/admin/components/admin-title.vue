@@ -33,7 +33,7 @@ export default {
   align-items: center;
   
   @include tablets {
-    padding: 45px 0;
+    padding: 45px 20px;
   }
 }
 .admin-head__title{

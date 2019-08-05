@@ -38,13 +38,13 @@ export default {
       state.WorkForm.show = false;
     },
 
-    EDIT_MODE_ON: (state, work) => {
+    TURN_EDIT_MODE_ON: (state, work) => {
       state.WorkForm.editMode = true;
       state.editedWork = {...work};
       state.editedTags = state.editedWork.techs.split(',');
     },
 
-    EDIT_MODE_OFF: (state) => {
+    TURN_EDIT_MODE_OFF: (state) => {
       state.WorkForm.editMode = false;
       state.editedWork = {};
       state.editedTags = [];
@@ -61,7 +61,10 @@ export default {
       tagsForAdd = tagsForAdd.filter(tag => tag !== "");
       state.editedTags = [...state.editedTags, ...tagsForAdd];
     },
-
+    
+    SET_EDITED_WORK: (state, work) => {
+      state.editedWork = {...work};
+    },
 
   },
   actions: {
@@ -71,7 +74,9 @@ export default {
         commit('ADD_WORK', response.data);
         return response;
       } catch (error) {
-      
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
       }
     },
 
@@ -81,24 +86,26 @@ export default {
         responseUserId = await this.$axios.get("/user");
         userId = responseUserId.data.user.id;
       } catch(error) {
-        
+        console.log(error.message);
       }
       try {
         const response = await this.$axios.get(`/works/${userId}`);
         commit("SET_WORKS", response.data.reverse());
         return response;
       } catch (error) {
-        
+        console.log(error.message);
       }
     },
 
-    async removeWork({ commit }, Id) {
+    async removeWork({ commit }, workId) {
       try {
-        const response = await this.$axios.delete(`/works/${Id}`);
+        const response = await this.$axios.delete(`/works/${workId}`);
         commit("REMOVE_WORK", workId);
         return response;
       } catch (error) {
-        
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
       }
     },
 
@@ -108,7 +115,9 @@ export default {
         commit("EDIT_WORK", response.data.work);
         return response;
       } catch (error) {
-        
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
       }
     }
   }

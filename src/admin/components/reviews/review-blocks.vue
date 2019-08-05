@@ -1,6 +1,6 @@
 <template lang="pug">
   ul.review-block__list
-    li.review-block__item.review-block__item--new-block
+    li.review-block__item--new-block
       button(
         type="button"
         @click="showFormAndTurnEditModeOff"
@@ -44,10 +44,7 @@ export default {
   async created() {
     try {
       this.fetchReviews();
-     
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 };
 </script>
@@ -64,6 +61,12 @@ export default {
   align-items: center;
   justify-content: center;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  @include phones {
+    width: 100%;
+    height: 110px;
+    flex-direction: inherit;
+    align-items: center;
+  }
 }
 .btn__review-block-title {
   font-size: 18px;
@@ -80,18 +83,30 @@ export default {
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 30px;
     justify-items: center;
+    @include tablets {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include phones {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 }
 .review-block__item--new-block {
   width: 340px;
   height: 380px;
-  
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  margin-bottom: 30px;
+  @include phones {
+    width: 336px;
+    height: 110px;
+  }
 }
 .review-blocks__item {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   background-color: #ffffff;
   width: 340px;
   height: 380px;
-  
   margin-bottom: 30px;
 }
 .btn__review-block-icon {
@@ -105,6 +120,12 @@ export default {
   font-size: 60px;
   color: #fff;
   margin-bottom: 25px;
+   @include phones {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    font-size: 40px;
+  }
 }
 
 </style>

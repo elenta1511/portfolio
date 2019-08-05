@@ -33,6 +33,9 @@ export default {
   grid-area: header;
   background-image: linear-gradient(to right, #3e3e59, #454573);
   padding: 20px 0;
+  @include tablets {
+    padding: 20px;
+  }
 }
 
 .admin-header__container {

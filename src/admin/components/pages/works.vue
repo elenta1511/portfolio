@@ -5,12 +5,9 @@
         headTitle='Блок «Работы»',
       )
       WorkForm(
-        v-if="showAddWork"
-        @handleAddWork="showAddWork = !showAddWork"
+        v-if="WorkForm.show"
       )
-      WorkBlocks(
-        @handleAddWork="showAddWork = !showAddWork"
-      )
+      WorkBlocks
 </template>
 
 <script>
@@ -32,6 +29,9 @@ export default {
       WorkForm: state => state.WorkForm
     })
   },
+  created() {
+    this.WorkForm.show = false;
+  }
 }
 </script>
 
