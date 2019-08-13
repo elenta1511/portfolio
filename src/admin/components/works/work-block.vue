@@ -89,8 +89,17 @@ export default {
 
 @import "../../../styles/mixins.pcss";
 
+.work-block {
+  display: grid;
+  grid-template-rows: .65fr 1fr;
+}
+.work-block__img {
+  height: 100%;
+  width: 100%;
+}
 .work-block__header {
   position: relative;
+  height: 200px;
 }
 .work-block__tags {
   position: absolute;
